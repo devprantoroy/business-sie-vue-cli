@@ -5,6 +5,8 @@ import ServiceView from '../views/pages/Service'
 import TeamView from '../views/pages/Team'
 import ClientView from '../views/pages/Clients'
 import ContactView from '../views/pages/Contact'
+import RegisterView from '@/views/auth/Register'
+import LoginView from '@/views/auth/Login'
 
 const routes = [
   {
@@ -36,6 +38,16 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: ContactView
+  },
+  {
+    path : '/register',
+    name : 'register',
+    component : RegisterView
+  },
+  {
+    path : '/login',
+    name : 'login',
+    component : LoginView
   }
 ]
 

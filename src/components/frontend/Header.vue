@@ -91,8 +91,7 @@
             </div>
             <div class="col-md-3 col-sm-5 d_none">
               <ul class="sign">
-                <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                <li><a class="sign_btn" href="#">sign up now</a></li>
+                <li><router-link class="sign_btn" :to="{name: 'register'}">sign up now</router-link></li>
               </ul>
             </div>
           </div>
@@ -106,3 +105,9 @@ export default{
     Name: "Header"
 }
 </script>
+<style>
+ a.router-link-active { 
+    color: #ffffff;
+     background-color : #f2db18;
+ }
+</style>
