@@ -11,22 +11,22 @@
             </div>
             <div class="row">
                <div class="col-md-8 offset-md-2">
-                  <form id="post_form" class="contact_form">
+                  <form id="post_form" class="contact_form" @submit.prevent="fromSubmit()">
                      <div class="row">
                         <div class="col-md-12 ">
-                           <input class="contact_control" placeholder="Name" type="text" name="name"> 
+                           <input class="contact_control" placeholder="Name" type="text" name="name" v-model="form.name"> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contact_control" placeholder="Email" type="email" name="email"> 
+                           <input class="contact_control" placeholder="Email" type="email" name="email" v-model="form.email"> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contact_control" placeholder="Phone Number" pattern="[0-9]+" type="text" name="mobile">                          
+                           <input class="contact_control" placeholder="Phone Number" pattern="[0-9]+" type="text" name="mobile" v-model="form.mobile">                          
                         </div>
                          <div class="col-md-12">
-                           <input class="contact_control" placeholder="Password" type="password" name="password">                          
+                           <input class="contact_control" placeholder="Password" type="password" name="password" v-model="form.password">                          
                         </div>
                         <div class="col-md-12">
-                           <input class="contact_control" placeholder="Confirm Password" type="password" name="confirm_password">                          
+                           <input class="contact_control" placeholder="Confirm Password" type="password" name="confirm_password" v-model="form.confirm_password">                          
                         </div>
                         
                         <div class="col-md-12">
@@ -46,7 +46,30 @@
       <!-- end contact  section -->
 </template>
 <script>
+import axios from 'axios';
 export default{
-    Name : "Contact"
+    Name : "Contact",
+    data : () =>(
+      {
+      
+      form : {
+         name : '',
+         email : '',
+         mobile : '',
+         password : '',
+         confirm_password : '',
+      },
+      errors : []
+    
+    }
+    ),
+    methods : {
+      fromSubmit(){
+         axios.post('/register',this.form).then((res)=> {
+            console.log(res);
+            this.$router.push({name: "login"});
+         })
+      }
+    }
 }
 </script>
